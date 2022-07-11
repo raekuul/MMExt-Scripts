@@ -1,0 +1,2 @@
+-- Uncomment to remove the teleporter to Dragonsand
+-- Game.MapEvtLines:RemoveEvent(104)
