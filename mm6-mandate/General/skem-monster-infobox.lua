@@ -1,6 +1,8 @@
 -- functions related to showing Monster Info in the right-click pane
 -- taken from Skill Emphasis mod, version 0.8.0
 
+-- if using with Skill Emphasis, comment out lines 3818 - 3933 in skill-mod.lua
+
 local attackTypes =
 {
 	[const.Damage.Phys] = "Phys",
