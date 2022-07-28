@@ -3,6 +3,13 @@
 
 -- if using with Skill Emphasis, comment out lines 3818 - 3933 in skill-mod.lua
 
+local masteries =
+{
+	[const.Novice] = "n",
+	[const.Expert] = "e",
+	[const.Master] = "m",
+}
+
 local attackTypes =
 {
 	[const.Damage.Phys] = "Phys",
