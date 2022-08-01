@@ -5,23 +5,21 @@
 Easy Mode uses shallower curves for the Damage Multiplier, and Energy attacks are not multiplied
 Easy Mode guarantees every monster will drop at least 1 gold, and increases the number of dice rolled for gold drops by 1
 Easy Mode scales all resistances so that they're relative to the resist cap, instead of only reducing immunity to the resist cap
-Easy Mode forces all flying monsters to attempt to engage in melee ]]
+Easy Mode forces all flying monsters to attempt to engage in melee 
+]]
 
 EASY = false
 
--- the resist_cap is the highest resistance that generic monsters are allowed to have
+-- resist_cap is the highest resistance that generic monsters are allowed to have
 -- in the absence of core Skill Emphasis (or other immunity removal mods), "Unique" monsters are still allowed to be immune to stuff
 resist_cap = 120
 
--- EnergyMod
--- This is a divisor applied to Energy attacks
+-- EnergyMod is a divisor applied to Energy attacks
 -- the larger this number, the weaker Energy attacks become
--- if EASY == true, this is ignored entirely (under Easy Mode, energy attacks are not multiplied at all)
 EnergyMod = 2
 
--- base multipliers
--- these multipliers are applied after monster customizations and EZ-exclusive tech are applied
--- defaults are 2 for Health and Armor, 1 for Treasure/Experience
+-- base multipliers are applied after monster customizations and EZ-exclusive tech are applied
+-- Skill Emphasis defaults are 2 for Health and Armor, 1 for Treasure/Experience
 -- Health/Armor/Gold functions will set the larger of vanilla or calculated, so base multipliers less than 1 do not apply 
 
 baseHealthMultiplier = 2
@@ -77,8 +75,6 @@ local missiles =
 }
 
 spellTxtIds = { }
-
-
 
 local monsterInfos =
 {
