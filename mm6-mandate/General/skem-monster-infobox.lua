@@ -1,7 +1,12 @@
--- functions related to showing Monster Info in the right-click pane
--- taken from Skill Emphasis mod, version 0.8.0
+--[[ 
 
--- if using with Skill Emphasis, comment out lines 3818 - 3933 in skill-mod.lua
+Monster Infobox for Skill Emphasis Mod
+
+supersedes lines 3818 - 3933 in skill-mod.lua 
+
+TODO:
+
+ ]]
 
 local masteries =
 {

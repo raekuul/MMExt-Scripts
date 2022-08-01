@@ -1,5 +1,5 @@
 -- skill set groups advancing together within a group for a single character
--- if using with Skill Emphasis, comment out lines 3737 - 3812 in skill-mod.lua
+-- supersedes lines 3737 - 3812 in skill-mod.lua
 
 local characterLinkedSkillGroups =
 {
