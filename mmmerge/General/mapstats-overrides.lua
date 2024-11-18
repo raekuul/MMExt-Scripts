@@ -1,0 +1,276 @@
+--[[
+
+Map Stats Overrides for MMMerge
+
+ -- for overriding Map Reload timers
+ 
+ MMMerge 0.1 - adapted to MMMerge
+ ]]
+
+local WEEK = 7
+local YEAR = WEEK * 52
+local CENTURY = YEAR * 100
+local NEVER = -1
+
+local globalReset = NEVER
+
+-- Maps are ordered by ID, starting from 1
+
+debug_string = ""
+
+MAPS = {
+	"out01.odm",
+	"out02.odm",
+	"out03.odm",
+	"out04.odm",
+	"out05.odm",
+	"out06.odm",
+	"out07.odm",
+	"out08.odm",
+	"elema.odm",
+	"eleme.blv",
+	"elemf.odm",
+	"elemw.odm",
+	"out13.odm",
+	"pbp.odm",
+	"out15.odm",
+	"d05.blv",
+	"d06.blv",
+	"d07.blv",
+	"d08.blv",
+	"d09.blv",
+	"d10.blv",
+	"d11.blv",
+	"d12.blv",
+	"d13.blv",
+	"d14.blv",
+	"d15.blv",
+	"d16.blv",
+	"d17.blv",
+	"d18.blv",
+	"d19.blv",
+	"d20.blv",
+	"d21.blv",
+	"d22.blv",
+	"d23.blv",
+	"d24.blv",
+	"d25.blv",
+	"d26.blv",
+	"d27.blv",
+	"d28.blv",
+	"d29.blv",
+	"d30.blv",
+	"d31.blv",
+	"d32.blv",
+	"d33.blv",
+	"d34.blv",
+	"d35.blv",
+	"d36.blv",
+	"d37.blv",
+	"d38.blv",
+	"d39.blv",
+	"d40.blv",
+	"d41.blv",
+	"d42.blv",
+	"d43.blv",
+	"d44.blv",
+	"d45.blv",
+	"d46.blv",
+	"d47.blv",
+	"d48.blv",
+	"d49.blv",
+	"d50.blv",
+	"7out01.odm",
+	"7out02.odm",
+	"7out03.odm",
+	"7out04.odm",
+	"7out05.odm",
+	"7out06.odm",
+	"out09.odm",
+	"out10.odm",
+	"out11.odm",
+	"out12.odm",
+	"7out13.odm",
+	"out14.odm",
+	"7out15.odm",
+	"d01.blv",
+	"d02.blv",
+	"d03.blv",
+	"d04.blv",
+	"7d05.blv",
+	"7d06.blv",
+	"7d07.blv",
+	"7d08.blv",
+	"7d09.blv",
+	"7d10.blv",
+	"7d11.blv",
+	"7d12.blv",
+	"7d13.blv",
+	"7d14.blv",
+	"7d15.blv",
+	"7d16.blv",
+	"7d17.blv",
+	"7d18.blv",
+	"7d19.blv",
+	"7d20.blv",
+	"7d21.blv",
+	"7d22.blv",
+	"7d23.blv",
+	"7d24.blv",
+	"7d25.blv",
+	"7d26.blv",
+	"7d27.blv",
+	"7d28.blv",
+	"7d29.blv",
+	"7d30.blv",
+	"7d31.blv",
+	"7d32.blv",
+	"7d33.blv",
+	"7d34.blv",
+	"7d35.blv",
+	"7d36.blv",
+	"7d37.blv",
+	"mdk01.blv",
+	"mdk02.blv",
+	"mdk03.blv",
+	"mdk04.blv",
+	"mdk05.blv",
+	"mdt01.blv",
+	"mdt02.blv",
+	"mdt03.blv",
+	"mdt04.blv",
+	"mdt05.blv",
+	"mdr01.blv",
+	"mdr02.blv",
+	"mdr03.blv",
+	"mdr04.blv",
+	"mdr05.blv",
+	"mdt09.blv",
+	"mdt10.blv",
+	"mdt11.blv",
+	"mdt12.blv",
+	"mdt14.blv",
+	"mdt15.blv",
+	"t01.blv",
+	"t02.blv",
+	"t03.blv",
+	"t04.blv",
+	"outa1.odm",
+	"outa2.odm",
+	"outa3.odm",
+	"outb1.odm",
+	"outb2.odm",
+	"outb3.odm",
+	"outc1.odm",
+	"outc2.odm",
+	"outc3.odm",
+	"outd1.odm",
+	"outd2.odm",
+	"outd3.odm",
+	"oute1.odm",
+	"oute2.odm",
+	"oute3.odm",
+	"6d01.blv",
+	"6d02.blv",
+	"6d03.blv",
+	"6d04.blv",
+	"6d05.blv",
+	"6d06.blv",
+	"6d07.blv",
+	"6d08.blv",
+	"6d09.blv",
+	"6d10.blv",
+	"6d11.blv",
+	"6d12.blv",
+	"6d13.blv",
+	"6d14.blv",
+	"6d15.blv",
+	"6d16.blv",
+	"6d17.blv",
+	"6d18.blv",
+	"6d19.blv",
+	"6d20.blv",
+	"6t1.blv",
+	"6t2.blv",
+	"6t3.blv",
+	"6t4.blv",
+	"6t5.blv",
+	"6t6.blv",
+	"6t7.blv",
+	"6t8.blv",
+	"cd1.blv",
+	"cd2.blv",
+	"cd3.blv",
+	"sewer.blv",
+	"pyramid.blv",
+	"oracle.blv",
+	"sci-fi.blv",
+	"hive.blv",
+	"zarena.blv",
+	"zddb01.blv",
+	"zddb02.blv",
+	"zddb03.blv",
+	"zddb04.blv",
+	"zddb05.blv",
+	"zddb06.blv",
+	"zddb07.blv",
+	"zddb08.blv",
+	"zddb09.blv",
+	"zddb10.blv",
+	"zdtl01.blv",
+	"zdtl02.blv",
+	"zdwj01.blv",
+	"zdwj02.blv",
+	"znwc.blv",
+	"Breach.odm",
+	"BrAlvar.odm",
+	"BrBase.blv",
+	"7nwc.blv",
+}
+
+MapIDs = { }
+for i,v in ipairs(MAPS) do
+	MapIDs[v] = i
+end
+
+-- Regional Reset stuff
+
+localResets = {
+	[MapIDs["out15.odm"]] = 0,
+	[MapIDs["d42.blv"]] = 0,
+	[MapIDs["d50.blv"]] = 0,
+	[MapIDs["7d05.blv"]] = 0,
+	[MapIDs["7d10.blv"]] = 0,
+	[MapIDs["7d11.blv"]] = 0,
+	[MapIDs["hive.blv"]] = 0,
+	[MapIDs["zarena.blv"]] = 0,
+	[MapIDs["znwc.blv"]] = 0,
+	[MapIDs["BrBase.blv"]] = 0,
+	
+	[MapIDs["d09.blv"]] = -1,
+	[MapIDs["7d29.blv"]] = -1,
+	[MapIDs["zddb04.blv"]] = -1,
+	[MapIDs["Breach.odm"]] = -1,
+	[MapIDs["BrAlvar.odm"]] = -1,
+}
+
+function changeAllRegionResets()
+	for i = 1, Game.MapStats.high do
+		orig = Game.MapStats[i]["RefillDays"]
+		if not (localResets[i] == nil)
+		then
+			Game.MapStats[i]["RefillDays"] = localResets[i]
+		elseif not (globalReset == nil) 
+		then
+			dump(Game.MapStats[i]["RefillDays"])
+			Game.MapStats[i]["RefillDays"] = globalReset
+			dump(Game.MapStats[i]["RefillDays"])
+		else
+			Game.MapStats[i]["RefillDays"] = orig
+		end
+	end
+end
+
+function events.GameInitialized2()
+	changeAllRegionResets()
+end
