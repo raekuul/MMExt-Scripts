@@ -1,5 +1,5 @@
 -- disambiguated item names and clearer item descriptions
--- last updated 2025-10-02
+-- last updated 2025-10-05
 
 commonNotes = { 
 			["AnonItem"] = "FOR TESTING USE ONLY.",
@@ -391,15 +391,11 @@ end
 
 function buildMergeItemTable()
 	for game,offset in pairs(itemTableIndexOffsets) do
---		debug.Message(game .. ": " .. offset)
 		for key,value in pairs(overrides[game].newItemNames) do
---			debug.Message(key .. ": " .. value)
 			q = key + offset
---			debug.Message(key .. "+" .. "offset" .. "=" .. q)
 			if (overrides["Merge"].newItemNames[key] == nil) then
 				overrides["Merge"].newItemNames[q] = value
 			end
---			debug.Message(overrides["Merge"].newItemNames[q])
 		end
 		for key,value in pairs(overrides[game].newItemNotes) do
 			q = key + offset
